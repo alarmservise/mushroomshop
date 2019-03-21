@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once 'db/db.php';
 
     $cats = $connect->query("SELECT * FROM cats");
@@ -28,7 +28,7 @@ require_once 'db/db.php';
         <?php foreach ($cats as $cat) {?>
             <li><a href="index.php?cat=<?php echo $cat['name']; ?>"><?php echo $cat['rus_name']; ?></a></li>
         <?php } ?>
-        <li><a href="cart.php">Корзина (Товаров: 15 на сумму 9955 руб)</a></li>
+        <li><a href="cart.php">Корзина (Товаров: <?php echo $_SESSION['totalQuantity']; ?> на сумму <?php echo $_SESSION['totalPrice']; ?> руб)</a></li>
     </ul>
 </nav>
 <hr>

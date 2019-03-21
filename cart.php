@@ -1,21 +1,22 @@
 <?php
+
+session_start();
 require_once 'parts/header.php';
+
+
+foreach ($_SESSION['cart'] as $product) {
+
 ?>
         <div class="cart">
-            <img src="img/amanita.jpg" alt="Фото>">
+            <a href="product.php?product=<?php echo $product['title']?>">
+                <img src="img/<?=$product['img']?>" alt="<?=$product['rus_name']?>">
+            </a>
             <div class="cart-descr">
-                Товар в количестве 15 шт на сумму 1555 рублей
+                <?=$product['rus_name']?> в количестве <?=$product['quantity']?> шт на сумму <?=$product['quantity']*$product['price']?> рублей
             </div>
             <button type="submit">Удалить</button>
         </div>
-
-        <div class="cart">
-            <img src="img/amanita.jpg" alt="Фото>">
-            <div class="cart-descr">
-                Товар в количестве 15 шт на сумму 1555 рублей
-            </div>
-            <button type="submit">Удалить</button>
-        </div>
+<? } ?>
 
         <hr>
 

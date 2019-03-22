@@ -1,11 +1,17 @@
 <?php
-require_once 'parts/header.php';
+
+require_once 'db/db.php';
 
 if (isset($_GET['product'])) {
     $currentProduct = $_GET['product'];
     $product = $connect->query("SELECT * FROM products WHERE title='$currentProduct'");
     $product = $product->fetch (PDO::FETCH_ASSOC);
 
+    if (!$product) {
+        header("Location: index.php");
+    }
+
+    require_once 'parts/header.php';
 //
 //    echo "<pre>";
 //    var_dump($product);

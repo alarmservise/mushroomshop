@@ -29,6 +29,6 @@ if(isset($_POST['order'])){
        unset($_SESSION['totalPrice']);
        unset($_SESSION['cart']);
        $_SESSION['order'] = $lastId;
-       header ("Location: ".$_SERVER['HTTP_REFERER']);
-}
 
+}
+header ("Location: ".$_SERVER['HTTP_REFERER']);
